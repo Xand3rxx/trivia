@@ -64,11 +64,15 @@ class QuizView extends Component {
           previousQuestions: previousQuestions,
           currentQuestion: result.question,
           guess: '',
+          // forceEnd: Object.keys(result.question).length !== 0 ? false : true
           forceEnd: result.question ? false : true
         })
       },
       error: (error) => {
-        alert('Unable to load question. Please try your request again')
+        this.setState({
+          forceEnd: true
+        })
+        // alert('Unable to load question. Please try your request again')
       }
     })
   }
