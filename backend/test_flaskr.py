@@ -86,7 +86,34 @@ class TriviaTestCase(unittest.TestCase):
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertTrue(len(data['questions']))
+        self.assertEqual(data['message'], 'Question was successfully created.')
+
+    def test_return_405_if_question_creation_method_is_not_allowed(self):
+        """Test _____________ """
+        res = self.client().post('/questions/100', json=self.new_question)
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 405)
+        self.assertEqual(data['success'], False)
+        self.assertEqual(data['message'], "method not allowed")
+    
+    def test_get_question_search_with_results(self):
+        """Test _____________ """
+        res = self.client().get('/questions', json={"searchTerm": "Heaviest"})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertTrue(data['questions'])
+
+    def test_get_question_search_without_results(self):
+        """Test _____________ """
+        res = self.client().get('/questions', json={"search": "Gibberish"})
+        data = json.loads(res.data)
+
+        self.assertEqual(res.status_code, 200)
+        self.assertEqual(data['success'], True)
+        self.assertTrue(data['questions'])
 
     def test_if_categories_endpoint_exists(self):
         """Test _____________ """
@@ -102,15 +129,14 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(data['success'], True)
         self.assertTrue(data['categories'])
 
-    def test_get_question_by_category(self):
-        res = self.client().get('/categories/4/questions')
+    def test_get_category_questions(self):
+        res = self.client().get('/categories/1/questions')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertTrue(data['questions'])
-        self.assertTrue(data['total_questions'])
-        self.assertEqual(data['current_category'], 'History')
+        self.assertEqual(data['questions'], [])
+        self.assertEqual(data['current_category'], 'Science')
 
     def test_to_return_404_for_invalid_question_range(self):
         res = self.client().get('/categories/13/questions')

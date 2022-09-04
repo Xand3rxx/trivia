@@ -1,10 +1,10 @@
 CREATE TABLE categories (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     type text
 );
 
 CREATE TABLE questions (
-    id integer NOT NULL,
+    id SERIAL PRIMARY KEY,
     question text,
     answer text,
     difficulty integer,
