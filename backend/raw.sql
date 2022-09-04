@@ -39,3 +39,5 @@ INSERT INTO questions (id, question, answer, difficulty, category) VALUES
 ('21',	'Who discovered penicillin?', 'Alexander Fleming', '3', '1'),
 ('22',	'Hematology is a branch of medicine involving the study of what?', 'Blood', '4', '1'),
 ('23',	'Which dung beetle was worshipped by the ancient Egyptians?', 'Scarab', '4', '4');
+
+
