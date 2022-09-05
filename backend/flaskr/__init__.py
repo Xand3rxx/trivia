@@ -153,41 +153,42 @@ def create_app(test_config=None):
         search_term = body.get('searchTerm', None)
 
         try:
-          if search_term:
-            # if search term is emoty return all questions
-            if search_term == '':
-                model = Question.query.all()
-            else:
-                model = Question.query.filter(
-                    Question.question.ilike(f'%{search_term}%')).all()
+            if search_term:
+                # if search term is emoty return all questions
+                if search_term == '':
+                    model = Question.query.all()
+                else:
+                    model = Question.query.filter(
+                        Question.question.ilike(f'%{search_term}%')).all()
 
-            questions = paginate_questions(request, model)
+                questions = paginate_questions(request, model)
 
-            if search_term == None:
-                abort(404)
+                if search_term == None:
+                    abort(404)
 
-            return jsonify({
-                "success": True,
-                "questions": questions,
-                "total_questions": len(model),
-            })
-          else:
-            question = Question(question=question, answer=answer,
-                                category=category, difficulty=difficulty)
-            question.insert()
-
-            return jsonify(
-                {
+                return jsonify({
                     "success": True,
-                    "message": 'Question was successfully created.',
-                }
-            )
+                    "questions": questions,
+                    "total_questions": len(model),
+                })
+            else:
+                if question == '' or answer == '' or category == '' or difficulty == '':
+                    abort(422)
+
+                question = Question(question=question, answer=answer,
+                                    category=category, difficulty=difficulty)
+                question.insert()
+
+                return jsonify(
+                    {
+                        "success": True,
+                        "message": 'Question was successfully created.',
+                    }
+                )
         except:
             question.rollback()
             print(sys.exc_info())
             abort(422)
-
-   
 
     '''
   @TODO: 
