@@ -89,7 +89,8 @@ def create_app(test_config=None):
             abort(404)
 
         for question in model:
-            category = Category.query.filter(Category.id == question.id).first()
+            category = Category.query.filter(
+                Category.id == question.id).first()
 
         return jsonify({
             'success': True,
@@ -245,18 +246,18 @@ def create_app(test_config=None):
             previous_questions_size = len(previous_questions)
             print(category_id)
 
-            # If all categories was selected and previous questions array is empty
+            # If ALL category was selected and previous questions array is empty
             if category_id == 0 & previous_questions_size == 0:
                 questions = Question.query.order_by(desc(Question.id)).all()
 
-            # If all categories was selected and previous questions array is not empty
+            # If ALL category was selected and previous questions array is not empty
             elif category_id == 0 & previous_questions_size > 0:
                 questions = Question.query.filter(
                     Question.id.notin_(previous_questions)).all()
             else:
                 questions = Question.query.filter(Question.id.notin_(previous_questions),
                                                   Question.category == category_id).all()
-            # Initialize question to None
+            # Initialize question variable to None
             question = None
             if (questions):
                 question = random.choice(questions)
