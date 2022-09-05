@@ -16,7 +16,7 @@ class Question extends Component {
   render() {
     const { id, question, answer, category, difficulty } = this.props;
     return (
-      <div className="Question-holder" id={`remove-${id}`}>
+      <div className="Question-holder main-width" id={`remove-${id}`}>
         <div className="Question">{question}
         <hr />
         </div>

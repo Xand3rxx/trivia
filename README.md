@@ -52,20 +52,21 @@ By making notes ahead of time, you will practice the core skill of being able to
 
 `GET '/categories'`
 
-- Fetches a dictionary of categories type in string
+- Fetches a dictionary of categories in which the keys are the ids and the value is the corresponding string of the category
 - Request Arguments: None
-- Returns: An object of an array of categories type, a success boolean value, and total number of categories.
+- Returns: An object with a single key, categories, that contains an object of id: category_string key:value pairs, a success boolean value, and total number of categories.
 
 ```json
 {
-  "categories": [
-    "Art",
-    "Entertainment",
-    "Geography",
-    "History",
-    "Science",
-    "Sports"
-  ],
+  "categories":
+  {
+    "1" : "Science",
+    "2" : "Art",
+    "3" : "Geography",
+    "4" : "History",
+    "5" : "Entertainment",
+    "6" : "Sports"
+  },
   "success": true,
   "total_categories": 6
 }
@@ -77,18 +78,19 @@ By making notes ahead of time, you will practice the core skill of being able to
 
 - Fetches a paginated set of questions.
 - Request Arguments: `page` - integer
-- Returns: An object with 10 paginated questions, total questions, array of categories type, total number of questions, and a success boolean value.
+- Returns: An object with 10 paginated questions, total questions, object of categories, total number of questions, and a success boolean value.
 
 ```json
 {
-  "categories": [
-    "Art",
-    "Entertainment",
-    "Geography",
-    "History",
-    "Science",
-    "Sports"
-  ],
+   "categories":
+  {
+    "1" : "Science",
+    "2" : "Art",
+    "3" : "Geography",
+    "4" : "History",
+    "5" : "Entertainment",
+    "6" : "Sports"
+  },
   "questions": [
     {
       "answer": "Scarab",
@@ -135,13 +137,14 @@ By making notes ahead of time, you will practice the core skill of being able to
 - Deletes a specified question using the id of the question
 - Request Arguments: `id` - integer
 - Returns: An object of the deleted id and a success boolean value.
+
 ```json
 {
   "deleted": 23,
   "success": true
 }
-
 ```
+
 ---
 
 `POST '/quizzes'`
@@ -209,17 +212,17 @@ By making notes ahead of time, you will practice the core skill of being able to
 
 ```json
 {
-    "questions": [
-        {
-            "answer": "The Liver",
-            "category": 1,
-            "difficulty": 4,
-            "id": 20,
-            "question": "What is the heaviest organ in the human body?"
-        }
-    ],
-    "success": true,
-    "total_questions": 1
+  "questions": [
+    {
+      "answer": "The Liver",
+      "category": 1,
+      "difficulty": 4,
+      "id": 20,
+      "question": "What is the heaviest organ in the human body?"
+    }
+  ],
+  "success": true,
+  "total_questions": 1
 }
 ```
 

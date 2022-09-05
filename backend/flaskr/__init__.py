@@ -47,7 +47,8 @@ def create_app(test_config=None):
 
     # Method to return all categories from the `categories` table
     def get_categories():
-        return [category.type for category in Category.query.order_by(asc(Category.type)).all()]
+        # return [category.format() for category in Category.query.order_by(asc(Category.type)).all()]
+        return {category.id: category.type for category in Category.query.order_by(asc(Category.type)).all()}
 
     '''
   @TODO:
@@ -87,12 +88,15 @@ def create_app(test_config=None):
         if len(questions) == 0:
             abort(404)
 
+        for question in model:
+            category = Category.query.filter(Category.id == question.id).first()
+
         return jsonify({
             'success': True,
             'questions': questions,
             'total_questions': total_questions(),
             'categories': get_categories(),
-            'current_category': 'Science'
+            'current_category': category.type
         })
 
     '''

@@ -92,7 +92,7 @@ class FormView extends Component {
             <div class="card-input">
               <label class="card-input__label">Difficulty</label>
               <select
-                class="card-input__input"
+                class="card-input__input" style={{height: 40, width: '109%'}}
                 name="difficulty"
                 onChange={this.handleChange}
               >
@@ -109,7 +109,7 @@ class FormView extends Component {
             <label class="card-input__label">
               Category
               </label>
-              <select class="card-input__input" name="category" onChange={this.handleChange}>
+              <select class="card-input__input" style={{height: 40, width: '109%'}} name="category" onChange={this.handleChange}>
                 {Object.keys(this.state.categories).map((id) => {
                   return (
                     <option key={id} value={id}>

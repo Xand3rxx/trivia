@@ -5,6 +5,20 @@ from flask_sqlalchemy import SQLAlchemy
 
 from flaskr import create_app
 from models import setup_db, Question, Category
+from dotenv import load_dotenv
+
+dotenv_path = os.path.abspath(os.path.dirname(__file__))
+
+# Get environment variables from .env.
+load_dotenv(dotenv_path+'/.env')
+
+DATABASE_USER = os.environ.get('DATABASE_USER')
+DATABASE_PASSWORD = os.getenv('DATABASE_PASSWORD')
+DATABASE_HOST = os.environ.get('DATABASE_HOST')  # eg localhost:5433
+TEST_DATABASE_NAME = os.getenv('TEST_DATABASE_NAME')
+if not DATABASE_PASSWORD:
+    raise ValueError("No DATABASE_PASSWORD set for Flask application")
+
 
 
 class TriviaTestCase(unittest.TestCase):
@@ -16,10 +30,9 @@ class TriviaTestCase(unittest.TestCase):
         self.client = self.app.test_client
         self.database_name = "trivia_test"
         self.database_path = "postgresql://{}:{}@{}/{}".format(
-            "postgres", "my1love1", "localhost:5433", self.database_name
+            DATABASE_USER, DATABASE_PASSWORD, DATABASE_HOST, TEST_DATABASE_NAME
         )
 
-        # self.database_path = "postgres://{}/{}".format('localhost:5433', self.database_name)
         setup_db(self.app, self.database_path)
 
         self.new_question = {

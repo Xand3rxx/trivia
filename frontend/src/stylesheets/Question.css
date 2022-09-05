@@ -41,6 +41,7 @@
 .questions-list {
   flex-basis: 75%;
   text-align: center;
+  margin-left: 325px;
 }
 
 .Question-holder {
@@ -55,10 +56,8 @@
   border-radius: 10px; /* 5px rounded corners */
   clear: both;
   position: relative;
-  margin-left: 325px;
   padding-bottom: 25px;
   background-color: #fff;
-  width: 90%;
 }
 
 /* On mouse-over, add a deeper shadow */
@@ -141,4 +140,8 @@ li > img.category {
   width: 30px;
   height: 20px;
   /* margin-top: 20px; */
+}
+
+.main-width{
+  width: 185% !important;
 }
