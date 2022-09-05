@@ -186,7 +186,7 @@ By making notes ahead of time, you will practice the core skill of being able to
 {
   "question": "What is the largest organ in the human body?",
   "answer": "Skin",
-  "difficulty": 5,
+  "difficulty": 1,
   "category": 3
 }
 ```

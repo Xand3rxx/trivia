@@ -120,7 +120,7 @@ class FormView extends Component {
               </select>
             </div>
             
-            <input type="submit" className="card-form__button" value="Submit" />
+            <input type="submit" className="button card-form__button" value="Submit" />
           </form>
         </div>
       </div>

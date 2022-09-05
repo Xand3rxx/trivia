@@ -38,7 +38,7 @@ class TriviaTestCase(unittest.TestCase):
         self.new_question = {
             "question": "What is the largest organ in the human body?",
             "answer": "Skin", 
-            "category": 5,
+            "category": 1,
             "difficulty": 3
         }
 

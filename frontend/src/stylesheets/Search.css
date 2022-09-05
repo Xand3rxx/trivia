@@ -1,0 +1,35 @@
+.card-input__input-2 {
+  width: 100%;
+  height: 30px;
+  border-radius: 5px;
+  box-shadow: none;
+  border: 1px solid #ced6e0;
+  transition: all 0.3s ease-in-out;
+  font-size: 18px;
+  padding: 5px 15px;
+  background: none;
+  color: #1a3b5d;
+  font-family: "Source Sans Pro", sans-serif;
+  text-align: center;
+  margin-left: -20px;
+}
+
+.card-form__button-2 {
+  width: 200px;
+  height: 35px;
+  /* background: #2364d2; */
+  background: dodgerblue;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Source Sans Pro", sans-serif;
+  box-shadow: 3px 10px 20px 0px rgb(35 100 210 / 30%);
+  color: #fff;
+  margin-top: 10px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: -3px;
+}
