@@ -58,8 +58,7 @@ By making notes ahead of time, you will practice the core skill of being able to
 
 ```json
 {
-  "categories":
-  {
+  "categories": {
     "1" : "Science",
     "2" : "Art",
     "3" : "Geography",
@@ -82,8 +81,7 @@ By making notes ahead of time, you will practice the core skill of being able to
 
 ```json
 {
-   "categories":
-  {
+   "categories": {
     "1" : "Science",
     "2" : "Art",
     "3" : "Geography",
@@ -186,9 +184,9 @@ By making notes ahead of time, you will practice the core skill of being able to
 
 ```json
 {
-  "question": "Heres a new question string",
-  "answer": "Heres a new answer string",
-  "difficulty": 1,
+  "question": "What is the largest organ in the human body?",
+  "answer": "Skin",
+  "difficulty": 5,
   "category": 3
 }
 ```
