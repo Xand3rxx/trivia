@@ -135,6 +135,7 @@ class TriviaTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 200)
 
     def test_get_categories(self):
+        """Test _____________ """
         res = self.client().get('/categories')
         data = json.loads(res.data)
 
@@ -143,15 +144,17 @@ class TriviaTestCase(unittest.TestCase):
         self.assertTrue(data['categories'])
 
     def test_get_category_questions(self):
+        """Test _____________ """
         res = self.client().get('/categories/1/questions')
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data['success'], True)
-        self.assertEqual(data['questions'], [])
+        self.assertGreater(len(data['questions']), 0)
         self.assertEqual(data['current_category'], 'Science')
 
     def test_to_return_404_for_invalid_question_range(self):
+        """Test _____________ """
         res = self.client().get('/categories/13/questions')
         data = json.loads(res.data)
 
