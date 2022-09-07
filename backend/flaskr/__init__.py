@@ -85,7 +85,7 @@ def create_app(test_config=None):
         model = Question.query.order_by(desc(Question.id)).all()
         questions = paginate_questions(request, model)
 
-        if len(questions) == 0:
+        if len(model) == 0:
             abort(404)
 
         for question in model:
@@ -257,6 +257,7 @@ def create_app(test_config=None):
             else:
                 questions = Question.query.filter(Question.id.notin_(previous_questions),
                                                   Question.category == category_id).all()
+
             # Initialize question variable to None
             question = None
             if (questions):
